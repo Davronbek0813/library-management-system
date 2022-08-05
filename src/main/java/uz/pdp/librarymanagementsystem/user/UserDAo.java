@@ -43,4 +43,7 @@ public class UserDAo {
 
         return userList;
     }
+    public  static  User getUserById(){
+        return  new User();
+    }
 }
