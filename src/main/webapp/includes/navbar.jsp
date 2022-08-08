@@ -20,9 +20,11 @@
     </div>
     <div class="menu">
         <ul class="d-flex">
-            <li class="mx-3"><a href="/books">Books</a></li>
+            <li class="mx-3"><a href="crudbook.jsp">Books</a></li>
+            <li class="mx-3"><a href="/authors">Authors</a></li>
+            <li class="mx-3"><a href="/category">Category</a></li>
+            <li class="mx-3"><a href="/users">Users</a></li>
             <li class="mx-3"><a href="/issue-return-book.jsp">Issue/Return a book</a></li>
-            <li class="mx-3"><a href="/students">Students</a></li>
             <li class="mx-3"><a href="/reports">Reports</a></li>
         </ul>
     </div>
@@ -31,7 +33,7 @@
         <input id="search-book" type="text" placeholder="ex. Shaytanat">
     </div>
     <div class="profile-image ">
-        <img class="rounded-circle " src="images/img.png" width="60px" height="60px" alt="">
+        <img class="rounded-circle " src="images/shaxsiy.png" width="60px" height="60px" alt="">
     </div>
 </nav>
 </body>

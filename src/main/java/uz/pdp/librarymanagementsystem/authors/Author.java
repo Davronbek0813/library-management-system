@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 public class Author {
-    private Long id;
+    private Integer id;
     private String fullName;
 
 }

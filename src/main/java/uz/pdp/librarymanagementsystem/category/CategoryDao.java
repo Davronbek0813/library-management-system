@@ -10,7 +10,63 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CategoryDao {
+    public static int save(Category c){
+        int status=0;
+        Connection connection=DbConnection.getConnection();
+        try {
+            PreparedStatement ps=connection.prepareStatement("insert into categories(name) values(?)");
+            ps.setString(1,c.getName());
+            status=ps.executeUpdate();
 
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return status;
+    }
+    public static  int delete(int id){
+        int status=0;
+        Connection connection=DbConnection.getConnection();
+        try {
+            PreparedStatement ps=connection.prepareStatement("delete from categories where id=?");
+            ps.setInt(1,id);
+            status= ps.executeUpdate();
+        } catch (SQLException e) {
+
+
+        }
+        return status;
+    }
+
+    public static int update(Category c){
+        int status=0;
+        Connection connection=DbConnection.getConnection();
+        try {
+            PreparedStatement ps=connection.prepareStatement("update categories set name=? where id="+c.getId());
+            ps.setString(1,c.getName());
+            status =ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return status;
+
+    }
+    public static Category getEmployeById(int id){
+        Category c=new Category();
+        Connection connection=DbConnection.getConnection();
+        try {
+            PreparedStatement ps=connection.prepareStatement("select * from categories where id =?");
+            ps.setInt(1,id);
+            ResultSet rs=ps.executeQuery();
+            if (rs.next()) {
+                c.setId(rs.getInt(1));
+                c.setName(rs.getString(2));
+
+            }connection.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return c;
+    }
 
     public static List<Category> getAllCategories() {
 
@@ -23,7 +79,7 @@ public class CategoryDao {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                long id = resultSet.getLong("id");
+                Integer id = resultSet.getInt("id");
                 String name = resultSet.getString("name");
 
                 Category category = Category.builder()

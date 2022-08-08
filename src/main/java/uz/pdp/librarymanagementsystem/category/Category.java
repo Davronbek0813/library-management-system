@@ -12,6 +12,6 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Category {
 
-    private Long id;
+    private  Integer id;
     private String name;
 }

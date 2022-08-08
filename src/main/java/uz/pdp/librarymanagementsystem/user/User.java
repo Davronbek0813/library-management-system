@@ -3,13 +3,13 @@ package uz.pdp.librarymanagementsystem.user;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import uz.pdp.librarymanagementsystem.role.Role;
 
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
-
+@Data
 public class User {
-    private Long  id;
+    private Integer id;
     private String username;
     private String password;
     private String fullname;
