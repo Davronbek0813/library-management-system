@@ -14,7 +14,6 @@ import uz.pdp.librarymanagementsystem.category.CategoryDao;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URLDecoder;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -101,28 +100,17 @@ public class UpdateBookServlet extends HttpServlet {
     private String uploadAndGetImageUrl(Part imagePart) {
         try {
 
-            // TODO: 03/08/22 fix upload image path
-            String contextPath = getServletContext().getContextPath();
-            File uploadDir = new File(UPLOAD_DIRECTORY, URLDecoder.decode(contextPath, "UTF-8"));
+            File uploadDir = new File(UPLOAD_DIRECTORY);
             if (!uploadDir.exists())
                 uploadDir.mkdir();
             int index = imagePart.getSubmittedFileName().lastIndexOf('.');
             String extension = imagePart.getSubmittedFileName().substring(index + 1);
             System.out.println("File extension is " + extension);
 
-            String uploadDirPath = uploadDir.getPath();
-            long longtime = System.currentTimeMillis();
-
-
-            String imgPath = "D:\\Java G9\\Yangi 5 modul Spring\\Ustoz Tashlagan Spring  boot ResApi\\Library Book\\library-management-system\\src\\main\\webapp\\images"+ "\\" + longtime + "." + extension;
+            String imgName = System.currentTimeMillis() + "." + extension;
+            String imgPath = uploadDir.getPath() + "/" + imgName;
             imagePart.write(imgPath);
-            uploadDirPath = uploadDirPath.substring(1);
-            uploadDirPath += "\\" + longtime + "." + extension;
-            //D:\Java G9\Yangi 5 modul Spring\Ustoz Tashlagan Spring  boot ResApi\Library Book\library-management-system\src\main\webapp\images
-
-
-
-            return uploadDirPath;
+            return imgName;
 
         } catch (IOException e) {
             throw new RuntimeException(e);

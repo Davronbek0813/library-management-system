@@ -11,7 +11,7 @@
 <html lang="en">
 <head>
     <title>BOOK PAGE</title>
-    <!--    <link rel="stylesheet" href="styles.css">-->
+    <!--    <link rel="stylesheet" href="styles1.css">-->
 
     <link rel="stylesheet" href="webjars/bootstrap/5.1.3/css/bootstrap.min.css">
 </head>
@@ -28,7 +28,7 @@
     <select id="userId" name="userId">
         <option disabled value="0">Select user:</option>
         <c:forEach items="${userList}" var="user">
-            <option value="${user.getId()}">${user.getUsername()}</option>
+            <option value="${user.getId()}">${user.getFullname()}</option>
         </c:forEach>
     </select>
     <label for="bookId">Select book:</label>

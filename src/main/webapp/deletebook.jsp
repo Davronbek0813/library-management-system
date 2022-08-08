@@ -11,7 +11,7 @@
 <html lang="en">
 <head>
     <title>BOOK PAGE</title>
-    <!--    <link rel="stylesheet" href="styles.css">-->
+    <!--    <link rel="stylesheet" href="">-->
 
     <link rel="stylesheet" href="webjars/bootstrap/5.1.3/css/bootstrap.min.css">
 </head>
@@ -28,15 +28,15 @@
         <h1>${message}</h1>
     </c:if>
 
-    <a href="/add-book">add new book</a>
-    <a href="/delete">delete book</a>
-    <a href="/update">update book</a>
+<%--    <a href="/add-book">add new book</a>--%>
+<%--    <a href="/delete">delete book</a>--%>
+<%--    <a href="/update">update book</a>--%>
 
     <div class="row justify-content-around">
 
         <c:forEach items="${bookList}" var="book">
             <div class="card my-4 text-center shadow col-md-3" style="width: 18rem;">
-                <img src="${book.getImgUrl()}" class="card-img-top" alt="${book.getTitle()}">
+                <img src="files/${book.getImgUrl()}" class="card-img-top" alt="${book.getTitle()}">
                 <div class="card-body">
                     <h5 class="card-title">${book.getTitle()}</h5>
                     <c:forEach items="${book.getAuthors()}" var="author">
